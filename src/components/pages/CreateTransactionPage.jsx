@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import api_client from "../../config/api_client";
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 export default function CreateTransactionPage({}) {
   const navigate = useNavigate();
@@ -31,9 +32,12 @@ export default function CreateTransactionPage({}) {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-center h-screen">
       <Toaster position="top-right" />
-      <div className="flex flex-col w-1/3 gap-2">
+      <Link to={'/transactions'} className="absolute self-start left-0">
+        <IoArrowBackCircleOutline className="w-10 h-10" />
+      </Link>
+      <div className="flex flex-col w-1/3 gap-2 rounded bg-gray-300 p-5">
         <h1 className="flex justify-center text-2xl font-bold">Criar Transação</h1>
         <label htmlFor="card_number">Numero do cartão</label>
         <input onChange={handleInputs} value={transactionData['card_number']} maxLength={16} className="p-1 border-2 border-black rounded" type="text" name="card_number" />
@@ -44,7 +48,7 @@ export default function CreateTransactionPage({}) {
         <label htmlFor="value_in_cents">Valor da transação</label>
         <input onChange={handleInputs} value={transactionData['value_in_cents']} className="p-1 border-2 border-black rounded" type="text" name="value_in_cents" />
         <div className="flex justify-center">
-          <button className="bg-green-400 rounded py-1 hover:bg-green-300 w-2/3" onClick={createTransaction}>CRIAR</button>
+          <button className="bg-green-400 rounded py-1 hover:bg-green-500 w-2/3 mt-5" onClick={createTransaction}>CRIAR</button>
         </div>
       </div>
     </div>

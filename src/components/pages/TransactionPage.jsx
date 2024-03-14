@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import api_client from "../../config/api_client";
 import moment from "moment";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 export default function TransactionPage({}) {
   const { id } = useParams();
@@ -15,7 +16,10 @@ export default function TransactionPage({}) {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-3xl py-10">Transaction {id}</h1>
+      <Link to={'/transactions'} className="absolute self-start top-0">
+        <IoArrowBackCircleOutline className="w-10 h-10" />
+      </Link>
+      <h1 className="text-3xl py-10">Transação {id}</h1>
       <div className="border rounded grid grid-cols-2 grid-rows-5 gap-2 text-xl p-3 bg-gray-100">
         <div className="">ID</div>
         <div>
