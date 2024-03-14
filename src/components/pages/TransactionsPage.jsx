@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import api_client from "../../config/api_client";
 import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
-
+import { FaPlus } from "react-icons/fa6";
 
 export default function TransactionsPage({ }) {
 
@@ -23,8 +23,14 @@ export default function TransactionsPage({ }) {
   return (
     <div className="flex flex-col items-center">
       <h1 className="my-10 text-3xl font-bold">Transações</h1>
-      <div className="w-1/2 flex flex-col items-center">
-        <table className="">
+      <div className="w-2/3 flex flex-col items-center">
+        <div className="flex justify-end w-full mb-5">
+          <Link to={'new'} className="bg-green-400 hover:bg-green-300 flex rounded p-2">
+            <p>Create transaction</p>
+            <FaPlus className="h-6 w-6" />
+          </Link>
+        </div>
+        <table className="w-full">
           <thead>
             <tr>
               <th className="p-2 bg-black text-white px-10 text-center">ID</th>
