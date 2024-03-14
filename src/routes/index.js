@@ -13,7 +13,7 @@ export default function ApplicationRouter() {
       <Routes>
         {/* Routes Start */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/create_transaction" element={<CreateTransactionPage />} />
+        <Route path="/transactions/new" element={<CreateTransactionPage />} />
         <Route path="/transactions" element={<TransactionsPage />} />
         <Route path="/transactions/:id" element={<TransactionPage />} />
         {/* Routes End */}
