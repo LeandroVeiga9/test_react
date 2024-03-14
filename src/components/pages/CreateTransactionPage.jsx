@@ -1,8 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import api_client from "../../config/api_client";
+import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateTransactionPage({}) {
+  const navigate = useNavigate();
 
   const [transactionData, setTransactionData] = useState({
     "card_number": "",
@@ -20,13 +22,17 @@ export default function CreateTransactionPage({}) {
   }
 
   const createTransaction = () => {
-    api_client.post('/transactions', {'transaction': transactionData}).then(response => {
-      console.log(response.data);
+    api_client.post('/transactions', {'transaction': transactionData}).then(() => {
+      toast.success("Transação criada com sucesso")
+      return navigate("/transactions");
+    }).catch(e => {
+      toast.error(e.response.data.error_message)
     })
   }
 
   return (
     <div className="flex justify-center">
+      <Toaster position="top-right" />
       <div className="flex flex-col w-1/3 gap-2">
         <h1 className="flex justify-center text-2xl font-bold">Criar Transação</h1>
         <label htmlFor="card_number">Numero do cartão</label>
