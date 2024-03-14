@@ -26,7 +26,7 @@ export default function TransactionsPage({ }) {
       <div className="w-2/3 flex flex-col items-center">
         <div className="flex justify-end w-full mb-5">
           <Link to={'new'} className="bg-green-400 hover:bg-green-500 flex rounded p-2">
-            <p>Create transaction</p>
+            <p>Criar transação</p>
             <FaPlus className="h-6 w-6" />
           </Link>
         </div>
