@@ -7,7 +7,7 @@ import { FaPlus } from "react-icons/fa6";
 export default function TransactionsPage({ }) {
 
   const [transactions, setTransactions] = useState([])
-  const [paginationData, setPaginationData] = useState()
+  const [paginationData, setPaginationData] = useState({})
 
   const getTransactions = (page = 1) => {
     api_client.get(`/transactions?page=${page}`).then(response => {
@@ -58,19 +58,17 @@ export default function TransactionsPage({ }) {
             }
           </tbody>
         </table>
-        {paginationData &&
-          <div className="w-full flex justify-end gap-1 mt-4">
-            {paginationData.prev_page && <MdOutlineKeyboardArrowLeft className="bg-black text-white w-6 h-6 rounded cursor-pointer" onClick={() => getTransactions(paginationData.prev_page)}/>}
-            {
-              paginationData && [...Array(paginationData.total_pages)].map((_, i) => (
-                <button key={i} className="bg-black text-white w-6 h-6 rounded" onClick={() => getTransactions(i+1)}>
-                  {i + 1}
-                </button>
-              ))
-            }
-            {paginationData.next_page && <MdOutlineKeyboardArrowRight className="bg-black text-white w-6 h-6 rounded cursor-pointer" onClick={() => getTransactions(paginationData.next_page)}/>}
-          </div>
-        }
+        <div className="w-full flex justify-end gap-1 mt-4">
+          {paginationData.prev_page && <MdOutlineKeyboardArrowLeft className="bg-black text-white w-6 h-6 rounded cursor-pointer" onClick={() => getTransactions(paginationData.prev_page)}/>}
+          {
+            paginationData && [...Array(paginationData.total_pages)].map((_, i) => (
+              <button key={i} className="bg-black text-white w-6 h-6 rounded" onClick={() => getTransactions(i+1)}>
+                {i + 1}
+              </button>
+            ))
+          }
+          {paginationData.next_page && <MdOutlineKeyboardArrowRight className="bg-black text-white w-6 h-6 rounded cursor-pointer" onClick={() => getTransactions(paginationData.next_page)}/>}
+        </div>
       </div>
     </div>
   )
