@@ -1,0 +1,46 @@
+import React from "react";
+import { useState } from "react";
+import api_client from "../../config/api_client";
+
+export default function CreateTransactionPage({}) {
+
+  const [transactionData, setTransactionData] = useState({
+    "card_number": "",
+    "card_expiration_date": "",
+    "cvv": "",
+    "value_in_cents": ""
+  })
+
+  const handleInputs = (e) => {
+    if (e.target.name !== 'card_expiration_date') {
+      e.target.value = e.target.value.replace(/\D/g, '')
+    }
+
+    setTransactionData({...transactionData, [e.target.name]: e.target.value})
+  }
+
+  const createTransaction = () => {
+    api_client.post('/transactions', {'transaction': transactionData}).then(response => {
+      console.log(response.data);
+    })
+  }
+
+  return (
+    <div className="flex justify-center">
+      <div className="flex flex-col w-1/3 gap-2">
+        <h1 className="flex justify-center text-2xl font-bold">Criar Transação</h1>
+        <label htmlFor="card_number">Numero do cartão</label>
+        <input onChange={handleInputs} value={transactionData['card_number']} maxLength={16} className="p-1 border-2 border-black rounded" type="text" name="card_number" />
+        <label htmlFor="card_expiration_date">Data de expiração</label>
+        <input onChange={handleInputs} value={transactionData['card_expiration_date']} className="p-1 border-2 border-black rounded" type="date" name="card_expiration_date" />
+        <label htmlFor="cvv">CVV</label>
+        <input onChange={handleInputs} value={transactionData['cvv']} maxLength={4} className="p-1 border-2 border-black rounded" type="text" name="cvv" />
+        <label htmlFor="value_in_cents">Valor da transação</label>
+        <input onChange={handleInputs} value={transactionData['value_in_cents']} className="p-1 border-2 border-black rounded" type="text" name="value_in_cents" />
+        <div className="flex justify-center">
+          <button className="bg-green-400 rounded py-1 hover:bg-green-300 w-2/3" onClick={createTransaction}>CRIAR</button>
+        </div>
+      </div>
+    </div>
+  )
+}
