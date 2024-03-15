@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import api_client from "../../config/api_client";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import TransactionModal from "../shared/TransactionModal";
 
 export default function TransactionsPage({ }) {
-
+  const navigate = useNavigate()
   const [transactions, setTransactions] = useState([])
   const [selectedTransaction, setSelectedTransaction] = useState({})
   const [paginationData, setPaginationData] = useState({})
@@ -20,6 +20,9 @@ export default function TransactionsPage({ }) {
   }
 
   useEffect(() => {
+    if (!localStorage.getItem('access_token')) {
+      return navigate('/auth')
+    }
     getTransactions()
   }, [])
 
