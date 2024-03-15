@@ -3,22 +3,32 @@ import api_client from "../../config/api_client";
 import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
+import TransactionModal from "../shared/TransactionModal";
 
 export default function TransactionsPage({ }) {
 
   const [transactions, setTransactions] = useState([])
+  const [selectedTransaction, setSelectedTransaction] = useState({})
   const [paginationData, setPaginationData] = useState({})
+  const [showModal, setShowModal] = useState(false)
 
   const getTransactions = (page = 1) => {
     api_client.get(`/transactions?page=${page}`).then(response => {
       setTransactions(response.data.transactions);
-      setPaginationData(response.data);
+      setPaginationData(response.data.pagination);
     })
   }
 
   useEffect(() => {
     getTransactions()
   }, [])
+
+  const handleModal = (transaction = null) => {
+    if(transaction) {
+      setSelectedTransaction(transaction)
+    }
+    setShowModal(!showModal)
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -51,7 +61,8 @@ export default function TransactionsPage({ }) {
                   <td className="p-2 border text-center">{transaction.cvv}</td>
                   <td className="p-2 border text-center">{transaction.value_in_cents}</td>
                   <td className="p-2 border text-center">
-                    <Link to={transaction.id.toString()}> <button className="bg-blue-700 rounded-full p-2 text-white">mostrar</button></Link>
+                    {/* <Link to={transaction.id.toString()}> <button className="bg-blue-700 rounded-full p-2 text-white">mostrar</button></Link> */}
+                    <button className="bg-blue-700 rounded-full p-2 text-white" onClick={() => handleModal(transaction)}>mostrar</button>
                   </td>
                 </tr>
               ))
@@ -70,6 +81,7 @@ export default function TransactionsPage({ }) {
           {paginationData.next_page && <MdOutlineKeyboardArrowRight className="bg-black text-white w-6 h-6 rounded cursor-pointer" onClick={() => getTransactions(paginationData.next_page)}/>}
         </div>
       </div>
+      {showModal && <TransactionModal transaction={selectedTransaction} setShowModal={setShowModal} />}
     </div>
   )
 }
