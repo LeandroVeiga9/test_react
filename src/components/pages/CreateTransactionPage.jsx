@@ -48,15 +48,16 @@ export default function CreateTransactionPage({}) {
 
       <div className="flex flex-col w-1/3 gap-2 rounded bg-gray-300 p-5">
         <h1 className="flex justify-center text-2xl font-bold">Criar Transação</h1>
+        <form onSubmit={createTransaction}>
+          <Input value={transactionData['card_number']} name="card_number" label='Numero do cartão' handleChange={handleInputs} maxLength={16} />
+          <Input value={transactionData['card_expiration_date']} name="card_expiration_date" label='Data de expiração' handleChange={handleInputs} type="date" />
+          <Input value={transactionData['cvv']} name="cvv" label='CVV' handleChange={handleInputs} maxLength={4} />
+          <Input value={transactionData['value_in_cents']} name="value_in_cents" label='Valor da transação' handleChange={handleInputs} />
 
-        <Input value={transactionData['card_number']} name="card_number" label='Numero do cartão' handleChange={handleInputs} maxLength={16} />
-        <Input value={transactionData['card_expiration_date']} name="card_expiration_date" label='Data de expiração' handleChange={handleInputs} type="date" />
-        <Input value={transactionData['cvv']} name="cvv" label='CVV' handleChange={handleInputs} maxLength={4} />
-        <Input value={transactionData['value_in_cents']} name="value_in_cents" label='Valor da transação' handleChange={handleInputs} />
-
-        <div className="flex justify-center">
-          <button className="bg-green-400 rounded py-1 hover:bg-green-500 w-2/3 mt-5" onClick={createTransaction}>CRIAR</button>
-        </div>
+          <div className="flex justify-center">
+            <button className="bg-green-400 rounded py-1 hover:bg-green-500 w-2/3 mt-5" onClick={createTransaction}>CRIAR</button>
+          </div>
+        </form>
       </div>
     </div>
   )

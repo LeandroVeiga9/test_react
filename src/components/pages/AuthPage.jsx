@@ -7,7 +7,7 @@ export default function AuthPage({}) {
     <div className="flex justify-center items-center h-screen">
       <Toaster position="top-right" />
 
-      <AuthForm propIsLogin={false}/>
+      <AuthForm propIsLogin={true}/>
     </div>
   )
 }
