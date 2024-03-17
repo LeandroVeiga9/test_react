@@ -51,6 +51,7 @@ export default function TransactionsPage({ }) {
               <th className="p-2 bg-black text-white px-10 text-center">Data de expiração</th>
               <th className="p-2 bg-black text-white px-10 text-center">CVV</th>
               <th className="p-2 bg-black text-white px-10 text-center">Valor da transação</th>
+              <th className="p-2 bg-black text-white px-10 text-center">ID do usuário</th>
               <th className="p-2 bg-black text-white px-10 text-center">Actions</th>
             </tr>
           </thead>
@@ -63,8 +64,8 @@ export default function TransactionsPage({ }) {
                   <td className="p-2 border text-center">{transaction.card_expiration_date}</td>
                   <td className="p-2 border text-center">{transaction.cvv}</td>
                   <td className="p-2 border text-center">{transaction.value_in_cents}</td>
+                  <td className="p-2 border text-center">{transaction.user_id}</td>
                   <td className="p-2 border text-center">
-                    {/* <Link to={transaction.id.toString()}> <button className="bg-blue-700 rounded-full p-2 text-white">mostrar</button></Link> */}
                     <button className="bg-blue-700 rounded-full p-2 text-white" onClick={() => handleModal(transaction)}>mostrar</button>
                   </td>
                 </tr>

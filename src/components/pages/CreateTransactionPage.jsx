@@ -29,7 +29,9 @@ export default function CreateTransactionPage({}) {
     setTransactionData({...transactionData, [e.target.name]: e.target.value})
   }
 
-  const createTransaction = () => {
+  const createTransaction = (e) => {
+    e.preventDefault()
+
     api_client.post('/transactions', {'transaction': transactionData}).then(() => {
       toast.success("Transação criada com sucesso")
       return navigate("/transactions");

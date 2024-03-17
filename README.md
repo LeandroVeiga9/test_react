@@ -2,69 +2,30 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Instalação
 
-In the project directory, you can run:
+- Adicione a chave `REACT_APP_API_ENDPOINT` no arquivo `.env` seguindo o exemplo mostrado em `.env-model.txt`;
+- Instale as dependencias utilizando o comando `npm instal` no terminal;
+- Inicie o projeto com o comando `npm run dev`;
 
-### `npm start`
+## Utilização da aplicação
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Crie sua conta ou faça login em uma conta existente:
+![formulario de login/cadastro](https://i.imgur.com/pj0EHgr.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Após criar sua conta você sera redirecionado para a pagina de transações, onde podera ver todas as transações criadas pelo usuario:
+![pagina de transações](https://i.imgur.com/f2Ydb4y.png)
+Clique no botão `Criar Transação` para ir para o formulario de criação de transação
+![pagina de transações com botão de criação destacado](https://i.imgur.com/cognzHo.jpeg)
 
-### `npm test`
+- Preencha o formulario e clique em `CRIAR` para criar uma transação
+![formulario de criação de transação](https://i.imgur.com/cB5mCty.png)
+Para voltar para a pagina inicial clique no botão no canto superior esquerdo da tela
+![formulario de criação de transação com botão destacado](https://i.imgur.com/obIpkIL.jpeg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Após criar uma transação voce podera velas na pagina de transações
+![lista de transações](https://i.imgur.com/V4makwd.png)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Para ver os dados de apenas uma transação clique no botão `mostrar`
+![lista de transações com botão 'mostrar' destacado](https://i.imgur.com/tL5xwJv.jpeg)
+![modal com os dados de uma transação](https://i.imgur.com/pZkgppN.png)
