@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Instalação
 
 - Adicione a chave `REACT_APP_API_ENDPOINT` no arquivo `.env` seguindo o exemplo mostrado em `.env-model.txt`;
